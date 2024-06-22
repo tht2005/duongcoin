@@ -150,6 +150,30 @@ namespace duonghash {
 		free(padded_msg);
 		return H;
 	}
+
+	ul hex_char_to_dec(char c) {
+		if('0' <= c && c <= '9') {
+			return c - '0';
+		}
+		c = tolower(c);
+		assert('a' <= c && c <= 'f');
+		return 10 + c - 'a';
+	}
+
+	ul* sha256(const char* hex_message) {
+		int len = strlen(hex_message);	
+		char *bin_message = (char*)malloc((4 * len + 5) * sizeof(char));
+		memset(bin_message, 0, (4 * len + 2) * sizeof(char));
+		for(int i = 0; i < len; ++i) {
+			int ch = hex_char_to_dec(hex_message[i]);
+			for(int j = 0; j < 4; ++j) {
+				bin_message[(i << 2) | (3 - j)] = '0' + (ch >> j & 1);
+			}
+		}
+		ul *H = binary_sha256(bin_message);
+		free(bin_message);
+		return H;
+	}
 }
 
 #undef INIT_H
