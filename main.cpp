@@ -13,10 +13,19 @@ void display(unsigned long long a) {
 }
 
 int main() {
-	uint32_t* H = binary_sha256("011000010110001001100011");
+	char s[2 * 1000000 + 10];
+	memset(s, 0, sizeof(s));
+
+	char *ptr = s;
+
+	for(int i = 0; i < 1000000; ++i) {
+		ptr = strcat(ptr, "61");
+	}
+
+	uint32_t* H = sha256(s);
 
 	for(int i = 0; i < 8; ++i) {
-		cout << hex << H[i] << ' ';
+		printf("%08x ", H[i]);
 	}
 
 	free(H);
