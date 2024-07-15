@@ -5,5 +5,6 @@ Dự án code một loại tiền crypto, không sử dụng các thư viện h�
 # Các giai đoạn
     - Code các thuật toán, cấu trúc dữ liệu liên quan
     - Code các thành phần như server, client, miner.
+    - Networking...
     - Code giao diện dựa vào thư viện SDL2.
 
