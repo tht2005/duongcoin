@@ -1,2 +1,6 @@
 *.swp
 ./build
+
+./main
+./main.cpp
+
